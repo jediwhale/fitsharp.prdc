@@ -1,0 +1,4 @@
+!path c:\users\mikes\desktop\code\fitsharp.prdc\build\debug\Tristan.Test.dll
+!define TEST_RUNNER {c:\apps\fitnesse\dotnet\Runner.exe}
+!define COMMAND_PATTERN {%m -r fitnesse.fitserver.FitServer %p}
+

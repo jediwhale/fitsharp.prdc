@@ -1,0 +1,17 @@
+Arthur and Trisha guessed 4 balls correctly (1,4,5,20). Arthur bought 8 tickets and Trisha bought 2 so the prize is split 4/1.
+
+!|Tickets in the draw|
+|player|numbers|count|
+|Ford|2,11,22,33,38,18|5|
+|Arthur|1,5,4,7,9,20|8|
+|Trisha|10,1,20,5,4,11|2|
+|Marvin|12,13,14,15,16,17|5|
+
+|Draw results are|1,5,4,20,38,37|
+
+|Accounts after the draw|
+|Player|Balance?|
+|Arthur|28|
+|Ford|50|
+|Trisha|82|
+|Marvin|50|

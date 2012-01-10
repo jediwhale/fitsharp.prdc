@@ -1,0 +1,18 @@
+|create accounts|
+|player|balance|
+|tom|100|
+
+|purchase tickets|
+|player|draw|numbers|count|
+|john|2012/01/01|1,3,4,5,8,10|1|
+|tom|2012/01/01|2,3,5,8,10,12|1|
+
+|player|john|views tickets for draw on|2012/01/01|
+|numbers|amount|
+|1,3,4,5,8,10|10|
+
+|player|tom|views tickets for draw on|2012/01/01|
+|numbers|amount|
+|2,3,5,8,10,12|10|
+
+

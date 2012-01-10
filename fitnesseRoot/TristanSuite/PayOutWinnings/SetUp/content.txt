@@ -1,0 +1,13 @@
+!|import|
+|Tristan.Test|
+
+!|Settlement|
+
+!|create accounts|
+|player|balance|
+|Arthur|100|
+|Ford|100|
+|Trisha|100|
+|Marvin|100|
+
+

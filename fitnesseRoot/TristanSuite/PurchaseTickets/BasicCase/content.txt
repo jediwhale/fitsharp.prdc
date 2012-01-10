@@ -1,0 +1,11 @@
+A player registers, transfers money into the account and purchases a ticket. The ticket should be registered for the correct draw in the system and the account balance and pool size will be adjusted for the ticket value.
+
+!|Purchase Ticket|
+|player|john|deposits|100|dollars with card|41111111111111111|and expiry date|01/15|
+|check|account balance for|john|100|
+|player|john|buys a ticket with numbers|1,3,4,5,8,10|for draw on|2012/01/01|
+|check|pool value for draw on|2012/01/01|is|10|
+|check|account balance for|john|90|
+|ticket with numbers|1,3,4,5,8,10|for|10|dollars is registered for player|john|for draw on|2012/01/01|
+
+

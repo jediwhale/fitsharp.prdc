@@ -1,0 +1,9 @@
+When there is not enough money in the account, the ticket purchase should be refused. The ticket should not be registered. Account value and pool value remain untouched.
+!|Purchase Ticket|
+|player|john|deposits|50|dollars with card|41111111111111111|and expiry date|01/15|
+|reject|player|john|buys|10|tickets with numbers|1,3,4,5,8,10|for draw on|2012/01/01|
+|check|pool value for draw on|2012/01/01|is|0|
+|check|account balance for|john|50|
+|not|ticket with numbers|1,3,4,5,8,10|for|100|dollars is registered for player|john|for draw on|2012/01/01|
+
+
