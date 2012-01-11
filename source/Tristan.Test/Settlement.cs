@@ -5,30 +5,30 @@ using fitlibrary;
 namespace Tristan.Test {
     public class Settlement: DoFixture {
         public Settlement() {
-            playerManager = new PlayerManager();
-            drawManager = new DrawManager(playerManager);
+            playerService = new PlayerService();
+            drawService = new DrawService(playerService);
             drawDate = DateTime.Now;
-            drawManager.CreateDraw(drawDate);
+            drawService.CreateDraw(drawDate);
         }
 
         public Fixture CreateAccounts() {
-            return new CreateAccounts(playerManager);
+            return new CreateAccounts(playerService);
         }
 
         public Fixture TicketsInTheDraw() {
-            return new PurchaseTickets(playerManager, drawManager).WithDrawDate(drawDate);
+            return new PurchaseTickets(playerService, drawService).WithDrawDate(drawDate);
         }
 
         public void DrawResultsAre(int[] numbers) {
-            drawManager.SettleDraw(drawDate, numbers);
+            drawService.SettleDraw(drawDate, numbers);
         }
 
         public Fixture AccountsAfterTheDraw() {
-            return new AccountsAfterTheDraw(playerManager);
+            return new AccountsAfterTheDraw(playerService);
         }
 
-        readonly DrawManager drawManager;
-        readonly PlayerManager playerManager;
+        readonly DrawService drawService;
+        readonly PlayerService playerService;
         readonly DateTime drawDate;
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 
 namespace Tristan {
-    public class DrawManager {
-        public DrawManager(PlayerManager playerManager) {
-            this.playerManager = playerManager;
+    public class DrawService {
+        public DrawService(PlayerService playerService) {
+            this.playerService = playerService;
         }
 
         public void CreateDraw(DateTime drawDate) {
@@ -17,7 +17,7 @@ namespace Tristan {
         }
 
         public void PurchaseTicket(DateTime drawDate, int playerId, int[] numbers, int count) {
-            var player = playerManager.GetPlayer(playerId);
+            var player = playerService.GetPlayer(playerId);
             var cost = ticketCost*count;
             player.AdjustBalance(-cost);
             GetDraw(drawDate).AddTicket(playerId, numbers, cost);
@@ -32,7 +32,7 @@ namespace Tristan {
                 var totalInCategory = ticketCategories[matches].Sum(ticket => ticket.Amount);
                 foreach (var ticket in ticketCategories[matches]) {
                     var winnings = ticket.Amount*prizePool/totalInCategory;
-                    playerManager.GetPlayer(ticket.PlayerId).AdjustBalance(winnings);
+                    playerService.GetPlayer(ticket.PlayerId).AdjustBalance(winnings);
                     ticket.Settle(winnings);
                 }
             }
@@ -53,7 +53,7 @@ namespace Tristan {
         const decimal ticketCost = 10M;
 
         readonly Dictionary<DateTime, Draw> draws = new Dictionary<DateTime,Draw>();
-        readonly PlayerManager playerManager;
+        readonly PlayerService playerService;
         const decimal operatorDeductionFactor = 0.5M;
     }
 }

@@ -41,12 +41,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Draw.cs" />
-    <Compile Include="DrawManager.cs" />
+    <Compile Include="DrawService.cs" />
     <Compile Include="DuplicateUserNameException.cs" />
     <Compile Include="InsufficientFundsException.cs" />
     <Compile Include="InvalidLogInException.cs" />
     <Compile Include="PlayerInfo.cs" />
-    <Compile Include="PlayerManager.cs" />
+    <Compile Include="PlayerService.cs" />
     <Compile Include="PlayerRegistrationInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ticket.cs" />

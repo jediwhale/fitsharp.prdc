@@ -6,39 +6,39 @@ using fitlibrary;
 namespace Tristan.Test {
     public class ViewTickets: DoFixture {
         public ViewTickets() {
-            playerManager = new PlayerManager();
-            drawManager = new DrawManager(playerManager);
+            playerService = new PlayerService();
+            drawService = new DrawService(playerService);
         }
 
         public void DrawOnIsOpen(DateTime drawDate) {
-            drawManager.CreateDraw(drawDate);
+            drawService.CreateDraw(drawDate);
         }
 
         public Fixture CreateAccounts() {
-            return new CreateAccounts(playerManager);
+            return new CreateAccounts(playerService);
         }
 
         public Fixture PurchaseTickets() {
-            return new PurchaseTickets(playerManager, drawManager);
+            return new PurchaseTickets(playerService, drawService);
         }
 
         public IEnumerable<Ticket> PlayerViewsTickets(string name) {
-            return drawManager.GetTickets(playerManager.GetPlayer(name).PlayerId);
+            return drawService.GetTickets(playerService.GetPlayer(name).PlayerId);
         }
 
         public IEnumerable<Ticket> PlayerViewsOpenTickets(string name) {
-            return drawManager.GetOpenTickets(playerManager.GetPlayer(name).PlayerId);
+            return drawService.GetOpenTickets(playerService.GetPlayer(name).PlayerId);
         }
 
         public IEnumerable<Ticket> PlayerViewsTicketsForDrawOn(string name, DateTime drawDate) {
-            return drawManager.GetTickets(playerManager.GetPlayer(name).PlayerId, drawDate);
+            return drawService.GetTickets(playerService.GetPlayer(name).PlayerId, drawDate);
         }
 
         public void DrawResultsAre(DateTime drawDate, int[] numbers) {
-            drawManager.SettleDraw(drawDate, numbers);
+            drawService.SettleDraw(drawDate, numbers);
         }
 
-        readonly DrawManager drawManager;
-        readonly PlayerManager playerManager;
+        readonly DrawService drawService;
+        readonly PlayerService playerService;
     }
 }

@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
 
 namespace Tristan {
-    public class PlayerManager {
+    public class PlayerService {
         public int RegisterPlayer(PlayerRegistrationInfo registration) {
             if (players.Values.Any(player => player.UserName == registration.UserName)) {
                 throw new DuplicateUserNameException();

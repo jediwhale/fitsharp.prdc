@@ -2,17 +2,17 @@ using fit;
 
 namespace Tristan.Test {
     public class AccountsAfterTheDraw: ColumnFixture {
-        public AccountsAfterTheDraw(PlayerManager playerManager) {
-            this.playerManager = playerManager;
+        public AccountsAfterTheDraw(PlayerService playerService) {
+            this.playerService = playerService;
         }
 
         public string Player;
         public decimal Balance {
             get {
-                return playerManager.GetPlayer(Player).Balance;
+                return playerService.GetPlayer(Player).Balance;
             }
         }
 
-        readonly PlayerManager playerManager;
+        readonly PlayerService playerService;
     }
 }

@@ -6,7 +6,7 @@ namespace Tristan.Test {
         public string Password;
 
         public int LoggedInAsPlayerId() {
-            return SetUpTestEnvironment.PlayerManager.Login(UserName, Password);
+            return SetUpTestEnvironment.PlayerService.Login(UserName, Password);
         }
     }
 }

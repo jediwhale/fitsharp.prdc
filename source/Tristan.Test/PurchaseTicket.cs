@@ -5,12 +5,12 @@ namespace Tristan.Test {
     public class PurchaseTicket: DoFixture {
         public void PlayerDepositsDollarsWithCardAndExpiryDate(
                 string userName, decimal amount, string card, string expiry) {
-            var playerId = SetUpTestEnvironment.PlayerManager.GetPlayer(userName).PlayerId;
-            SetUpTestEnvironment.PlayerManager.DepositWithCard(playerId, card, expiry, amount);
+            var playerId = SetUpTestEnvironment.PlayerService.GetPlayer(userName).PlayerId;
+            SetUpTestEnvironment.PlayerService.DepositWithCard(playerId, card, expiry, amount);
         }
 
         public decimal AccountBalanceFor(string userName) {
-            return SetUpTestEnvironment.PlayerManager.GetPlayer(userName).Balance;
+            return SetUpTestEnvironment.PlayerService.GetPlayer(userName).Balance;
         }
 
         public void PlayerBuysATicketWithNumbersForDrawOn(string userName, int[] numbers, DateTime drawDate) {
@@ -18,18 +18,18 @@ namespace Tristan.Test {
         }
 
         public void PlayerBuysTicketsWithNumbersForDrawOn(string userName, int count, int[] numbers, DateTime drawDate) {
-            var playerId = SetUpTestEnvironment.PlayerManager.GetPlayer(userName).PlayerId;
-            SetUpTestEnvironment.DrawManager.PurchaseTicket(drawDate, playerId, numbers, count);
+            var playerId = SetUpTestEnvironment.PlayerService.GetPlayer(userName).PlayerId;
+            SetUpTestEnvironment.DrawService.PurchaseTicket(drawDate, playerId, numbers, count);
         }
 
         public decimal PoolValueForDrawOnIs(DateTime drawDate) {
-            return SetUpTestEnvironment.DrawManager.GetDraw(drawDate).TotalPoolSize;
+            return SetUpTestEnvironment.DrawService.GetDraw(drawDate).TotalPoolSize;
         }
 
         public bool TicketWithNumbersForDollarsIsRegisteredForPlayerForDrawOn(
                 int[] numbers, decimal amount, string userName, DateTime drawDate) {
-            var ticket = SetUpTestEnvironment.DrawManager.GetDraw(drawDate).GetTicket(numbers);
-            return ticket.PlayerId == SetUpTestEnvironment.PlayerManager.GetPlayer(userName).PlayerId
+            var ticket = SetUpTestEnvironment.DrawService.GetDraw(drawDate).GetTicket(numbers);
+            return ticket.PlayerId == SetUpTestEnvironment.PlayerService.GetPlayer(userName).PlayerId
                 && ticket.Amount == amount;
         }
     }

@@ -2,16 +2,15 @@ using fit;
 
 namespace Tristan.Test {
     public class PlayerRegisters: ColumnFixture {
-        public override object GetTargetObject() {
-            return target;
+        public override void Reset() {
+            registration = new PlayerRegistrationInfo();
+            SetSystemUnderTest(registration);
         }
 
-        readonly TargetPlayerRegistrationInfo target = new TargetPlayerRegistrationInfo();
-
-        class TargetPlayerRegistrationInfo: PlayerRegistrationInfo {
-            public int NewPlayerId() {
-                return SetUpTestEnvironment.PlayerManager.RegisterPlayer(this);
-            }
+        public int NewPlayerId() {
+            return SetUpTestEnvironment.PlayerService.RegisterPlayer(registration);
         }
+
+        PlayerRegistrationInfo registration;
     }
 }

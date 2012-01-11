@@ -3,9 +3,9 @@ using fitlibrary;
 
 namespace Tristan.Test {
     public class PurchaseTickets: SetUpFixture {
-        public PurchaseTickets(PlayerManager playerManager, DrawManager drawManager) {
-            this.playerManager = playerManager;
-            this.drawManager = drawManager;
+        public PurchaseTickets(PlayerService playerService, DrawService drawService) {
+            this.playerService = playerService;
+            this.drawService = drawService;
         }
 
         public PurchaseTickets WithDrawDate(DateTime drawDate) {
@@ -18,11 +18,11 @@ namespace Tristan.Test {
         }
 
         public void PlayerDrawNumbersCount(string name, DateTime drawDate, int[] numbers, int count) {
-            drawManager.PurchaseTicket(drawDate, playerManager.GetPlayer(name).PlayerId, numbers, count);
+            drawService.PurchaseTicket(drawDate, playerService.GetPlayer(name).PlayerId, numbers, count);
         }
 
-        readonly DrawManager drawManager;
-        readonly PlayerManager playerManager;
+        readonly DrawService drawService;
+        readonly PlayerService playerService;
         DateTime defaultDrawDate;
     }
 }

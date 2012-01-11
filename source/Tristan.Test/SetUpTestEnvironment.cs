@@ -4,15 +4,15 @@ using fitlibrary;
 namespace Tristan.Test {
     public class SetUpTestEnvironment: DoFixture {
         public SetUpTestEnvironment() {
-            PlayerManager = new PlayerManager();
-            DrawManager = new DrawManager(PlayerManager);
+            PlayerService = new PlayerService();
+            DrawService = new DrawService(PlayerService);
         }
 
         public void CreateDraw(DateTime drawDate) {
-            DrawManager.CreateDraw(drawDate);
+            DrawService.CreateDraw(drawDate);
         }
 
-        public static PlayerManager PlayerManager;
-        public static DrawManager DrawManager;
+        public static PlayerService PlayerService;
+        public static DrawService DrawService;
     }
 }

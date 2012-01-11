@@ -2,16 +2,16 @@ using fitlibrary;
 
 namespace Tristan.Test {
     public class CreateAccounts: SetUpFixture {
-        public CreateAccounts(PlayerManager playerManager) {
-            this.playerManager = playerManager;
+        public CreateAccounts(PlayerService playerService) {
+            this.playerService = playerService;
         }
 
         public void PlayerBalance(string name, decimal balance) {
             var registration = new PlayerRegistrationInfo {UserName = name};
-            var playerId = playerManager.RegisterPlayer(registration);
-            playerManager.GetPlayer(playerId).AdjustBalance(balance);
+            var playerId = playerService.RegisterPlayer(registration);
+            playerService.GetPlayer(playerId).AdjustBalance(balance);
         }
 
-        readonly PlayerManager playerManager;
+        readonly PlayerService playerService;
     }
 }
