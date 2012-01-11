@@ -5,7 +5,9 @@
     </Settings>
 
     <ApplicationUnderTest>
+        <addNamespace>Tristan</addNamespace>
         <addNamespace>Tristan.Test</addNamespace>
+        <addAssembly>build\debug\Tristan.dll</addAssembly>
         <addAssembly>build\debug\Tristan.Test.dll</addAssembly>
     </ApplicationUnderTest>
     

@@ -3,16 +3,14 @@ using fit;
 namespace Tristan.Test {
     public class PrizeDistributionForPayoutPool: ColumnFixture {
         public int PoolPercentage() {
-            return calculator.GetPoolPercentage(WinningCombination);
+            return PayoutPool.PoolPercentage(Matches);
         }
 
         public decimal PrizePool() {
-            var payoutPool = decimal.Parse(Args[0]);
-            return calculator.GetPrizePool(WinningCombination, payoutPool);
+            var payoutPool = new PayoutPool(decimal.Parse(Args[0]));
+            return payoutPool.PrizePool(Matches);
         }
 
-        public int WinningCombination;
-
-        readonly WinningsCalculator calculator = new WinningsCalculator();
+        public int Matches;
     }
 }

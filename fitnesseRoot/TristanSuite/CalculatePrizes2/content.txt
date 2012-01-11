@@ -1,0 +1,18 @@
+The payout pool is divided among the winners using the following distribution for matches (number of correct hits out of six chosen numbers). Example is for $2M payout pool.
+
+|with|new|payout pool|2,000,000|
+
+|compute|
+|matches|pool percentage|
+|6|68|
+|5|10|
+|4|10|
+|3|12|
+
+|compute|
+|matches|prize pool|
+|6|1,360,000|
+|5|200,000|
+|4|200,000|
+|3|240,000|
+

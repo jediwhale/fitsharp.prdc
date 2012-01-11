@@ -1,1 +1,4 @@
+!define TEST_RUNNER {c:\apps\fitnesse\dotnet\Runner.exe}
+!define COMMAND_PATTERN {%m -c storytest.config.xml %p}
+
 !contents -R

@@ -24,11 +24,11 @@ namespace Tristan {
         }
 
         public void SettleDraw(DateTime drawDate, int[] numbers) {
-            var calculator = new WinningsCalculator();
             var draw = GetDraw(drawDate);
+            var payoutPool = new PayoutPool(draw.TotalPoolSize * operatorDeductionFactor);
             var ticketCategories = draw.SplitTicketsIntoCategories(numbers);
             for (var matches = 0; matches <= numbers.Length; matches++) {
-                var prizePool = calculator.GetPrizePool(matches, draw.TotalPoolSize*operatorDeductionFactor);
+                var prizePool = payoutPool.PrizePool(matches);
                 var totalInCategory = ticketCategories[matches].Sum(ticket => ticket.Amount);
                 foreach (var ticket in ticketCategories[matches]) {
                     var winnings = ticket.Amount*prizePool/totalInCategory;
