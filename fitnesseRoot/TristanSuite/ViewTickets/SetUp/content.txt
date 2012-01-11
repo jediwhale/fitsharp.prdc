@@ -1,6 +1,3 @@
-!|import|
-|Tristan.Test|
-
 |view tickets|
 
 |Draw on|2012/01/01|is open|

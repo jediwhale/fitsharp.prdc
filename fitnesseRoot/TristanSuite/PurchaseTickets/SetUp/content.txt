@@ -1,6 +1,3 @@
-!|import|
-|Tristan.Test|
-
 !|Set Up Test Environment|
 |Create Draw|2012/01/01|
 

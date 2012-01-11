@@ -1,6 +1,3 @@
-|import|
-|Tristan.Test|
-
 The prize pool is divided among the winners using the following distribution for winning combinations (number of correct hits out of six chosen numbers). Example is for $2M payout pool.
 
 !|Prize Distribution for Payout Pool|2,000,000|

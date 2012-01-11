@@ -1,0 +1,12 @@
+<suiteConfig>
+
+    <Settings>
+        <runner>fitnesse.fitserver.FitServer</runner>
+    </Settings>
+
+    <ApplicationUnderTest>
+        <addNamespace>Tristan.Test</addNamespace>
+        <addAssembly>build\debug\Tristan.Test.dll</addAssembly>
+    </ApplicationUnderTest>
+    
+</suiteConfig>
