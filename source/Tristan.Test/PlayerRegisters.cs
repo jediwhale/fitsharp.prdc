@@ -3,7 +3,7 @@ using fit;
 namespace Tristan.Test {
     public class PlayerRegisters: ColumnFixture {
         public override void Reset() {
-            registration = new PlayerRegistrationInfo();
+            registration = new PlayerRegistration();
             SetSystemUnderTest(registration);
         }
 
@@ -11,6 +11,6 @@ namespace Tristan.Test {
             return SetUpTestEnvironment.PlayerService.RegisterPlayer(registration);
         }
 
-        PlayerRegistrationInfo registration;
+        PlayerRegistration registration;
     }
 }

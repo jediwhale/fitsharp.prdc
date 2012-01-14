@@ -1,5 +1,5 @@
 namespace Tristan {
-    public class PlayerRegistrationInfo {
+    public class PlayerRegistration {
         public string UserName;
         public string Password;
         public string Name;

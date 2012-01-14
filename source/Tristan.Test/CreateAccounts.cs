@@ -7,7 +7,7 @@ namespace Tristan.Test {
         }
 
         public void PlayerBalance(string name, decimal balance) {
-            var registration = new PlayerRegistrationInfo {UserName = name};
+            var registration = new PlayerRegistration {UserName = name};
             var playerId = playerService.RegisterPlayer(registration);
             playerService.GetPlayer(playerId).AdjustBalance(balance);
         }

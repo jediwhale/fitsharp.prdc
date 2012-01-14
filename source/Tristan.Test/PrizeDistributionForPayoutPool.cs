@@ -7,7 +7,7 @@ namespace Tristan.Test {
         }
 
         public decimal PrizePool() {
-            var payoutPool = new PayoutPool(decimal.Parse(Args[0]));
+            var payoutPool = new PayoutPool(GetArgumentInput<decimal>(0));
             return payoutPool.PrizePool(Matches);
         }
 

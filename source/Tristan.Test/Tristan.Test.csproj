@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountsAfterTheDraw.cs" />
+    <Compile Include="CalculatePrizesForPayoutPool.cs" />
     <Compile Include="CreateAccounts.cs" />
     <Compile Include="CheckLogin.cs" />
     <Compile Include="CheckStoredDetailsFor.cs" />

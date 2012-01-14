@@ -9,8 +9,8 @@ Upon registration, player details are stored correctly in the system. Player can
 
 The player can log in and the balance on his account is 0. Players cannot log in with an incorrect password.
 
-!|Check Stored Details for|<<player|
-|user name?|name?|address?|city?|post code?|country?|balance?|
+!|show player|<<player|
+|user name|name|address|city|post code|country|balance|
 |johnsmith|john Smith|44 Ranelagh Way|London|NN1EE1|UK|0|
 
 !|Check Log In|

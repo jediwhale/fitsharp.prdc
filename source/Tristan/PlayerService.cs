@@ -3,21 +3,21 @@ using System.Linq;
 
 namespace Tristan {
     public class PlayerService {
-        public int RegisterPlayer(PlayerRegistrationInfo registration) {
+        public int RegisterPlayer(PlayerRegistration registration) {
             if (players.Values.Any(player => player.UserName == registration.UserName)) {
                 throw new DuplicateUserNameException();
             }
 
-            var newPlayer = new PlayerInfo(registration);
+            var newPlayer = new Player(nextId++, registration);
             players.Add(newPlayer.PlayerId, newPlayer);
             return newPlayer.PlayerId;
         }
 
-        public PlayerInfo GetPlayer(int playerId) {
+        public Player GetPlayer(int playerId) {
             return players[playerId];
         }
 
-        public PlayerInfo GetPlayer(string userName) {
+        public Player GetPlayer(string userName) {
             return players.Values.Where(player => player.UserName == userName).First();
         }
 
@@ -33,6 +33,8 @@ namespace Tristan {
             players[playerId].AdjustBalance(amount);
         }
 
-        readonly Dictionary<int, PlayerInfo> players = new Dictionary<int,PlayerInfo>();
+        static int nextId = 1;
+
+        readonly Dictionary<int, Player> players = new Dictionary<int,Player>();
     }
 }
