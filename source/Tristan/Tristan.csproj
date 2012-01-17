@@ -47,6 +47,7 @@
     <Compile Include="InsufficientFundsException.cs" />
     <Compile Include="InvalidLogInException.cs" />
     <Compile Include="Player.cs" />
+    <Compile Include="Players.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="PlayerRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

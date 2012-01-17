@@ -5,8 +5,9 @@ using fitlibrary;
 namespace Tristan.Test {
     public class Settlement: DoFixture {
         public Settlement() {
-            playerService = new PlayerService();
-            drawService = new DrawService(playerService);
+            var players = new Players(); 
+            playerService = new PlayerService(players);
+            drawService = new DrawService(players);
             drawDate = DateTime.Now;
             drawService.CreateDraw(drawDate);
         }

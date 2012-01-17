@@ -2,8 +2,8 @@ using fitSharp.Machine.Model;
 
 namespace Tristan.Test {
     public class TestDrawService: DomainAdapter {
-        public TestDrawService(PlayerService playerService) {
-            DrawService = new DrawService(playerService);
+        public TestDrawService(Players players) {
+            DrawService = new DrawService(players);
         }
 
         public object SystemUnderTest { get { return DrawService; } }

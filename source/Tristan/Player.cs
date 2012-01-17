@@ -1,7 +1,6 @@
 namespace Tristan {
     public class Player {
-        public Player(int playerId, PlayerRegistration registration) {
-            PlayerId = playerId;
+        public Player(PlayerRegistration registration) {
             Balance = 0M;
             UserName = registration.UserName;
             Password = registration.Password;
@@ -22,7 +21,7 @@ namespace Tristan {
             Balance += amount;
         }
 
-        public int PlayerId { get; private set; }
+        public int PlayerId { get; set; }
         public decimal Balance { get; private set; }
         public string UserName { get; private set; }
         string Password { get; set; }

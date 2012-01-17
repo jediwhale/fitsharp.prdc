@@ -3,13 +3,15 @@ using System.Linq;
 
 namespace Tristan {
     public class PlayerService {
-        public int RegisterPlayer(PlayerRegistration registration) {
-            if (players.Values.Any(player => player.UserName == registration.UserName)) {
-                throw new DuplicateUserNameException();
-            }
+        public PlayerService(Players players) {
+            this.players = players;
+        }
 
-            var newPlayer = new Player(nextId++, registration);
-            players.Add(newPlayer.PlayerId, newPlayer);
+        public int RegisterPlayer(PlayerRegistration registration) {
+            if (players.GetPlayers(registration.UserName).Any()) throw new DuplicateUserNameException();
+
+            var newPlayer = new Player(registration);
+            players.Add(newPlayer);
             return newPlayer.PlayerId;
         }
 
@@ -18,7 +20,7 @@ namespace Tristan {
         }
 
         public Player GetPlayer(string userName) {
-            return players.Values.Where(player => player.UserName == userName).FirstOrDefault();
+            return players.GetPlayers(userName).FirstOrDefault();
         }
 
         public int LoginPlayer(string username, string password) {
@@ -32,28 +34,26 @@ namespace Tristan {
         }
 
         public Response Register(PlayerRegistration registration) {
-            if (players.Values.Any(player => player.UserName == registration.UserName)) {
+            if (players.GetPlayers(registration.UserName).Any()) {
                 return new Response(false, "Duplicate user name");
             }
 
-            var newPlayer = new Player(nextId++, registration);
-            players.Add(newPlayer.PlayerId, newPlayer);
+            var newPlayer = new Player(registration);
+            players.Add(newPlayer);
             return new Response(true, "Player registered");
         }
 
         public IEnumerable<Player> GetPlayers(string userName) {
-            return players.Values.Where(player => player.UserName == userName);
+            return players.GetPlayers(userName);
         }
 
         public Response Login(string username, string password) {
-            var loggedIn = GetPlayers(username).ForFirst(player => player.HasPassword(password), () => false);
+            var loggedIn = players.GetPlayers(username).ForFirst(player => player.HasPassword(password), () => false);
             return loggedIn
                 ? new Response(true, "Player logged in")
                 : new Response(false, "Invalid log in");
         }
 
-        static int nextId = 1;
-
-        readonly Dictionary<int, Player> players = new Dictionary<int,Player>();
+        readonly Players players;
     }
 }

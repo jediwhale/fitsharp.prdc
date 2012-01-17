@@ -4,19 +4,12 @@ using fitSharp.Machine.Model;
 namespace Tristan.Test {
     public class TestPlayerService: DomainAdapter {
         public TestPlayerService() {
-            PlayerService = new PlayerService();
-            TestDrawService = new TestDrawService(PlayerService);
+            var players = new Players();
+            PlayerService = new PlayerService(players);
+            TestDrawService = new TestDrawService(players);
         }
 
         public object SystemUnderTest { get { return PlayerService; } }
-
-        public Fixture RegisterPlayers() {
-            return new RegisterPlayers(PlayerService);
-        }
-
-        public Fixture LogIn() {
-            return new LogIn(PlayerService);
-        }
 
         public Fixture PurchaseTicket() {
             return new PurchaseTicket(this);

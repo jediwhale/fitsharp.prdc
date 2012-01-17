@@ -6,8 +6,9 @@ using fitlibrary;
 namespace Tristan.Test {
     public class ViewTickets: DoFixture {
         public ViewTickets() {
-            playerService = new PlayerService();
-            drawService = new DrawService(playerService);
+            var players = new Players();
+            playerService = new PlayerService(players);
+            drawService = new DrawService(players);
         }
 
         public void DrawOnIsOpen(DateTime drawDate) {

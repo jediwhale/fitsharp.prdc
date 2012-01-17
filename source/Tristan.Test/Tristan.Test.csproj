@@ -50,7 +50,6 @@
     <Compile Include="CalculatePrizesForPayoutPool.cs" />
     <Compile Include="CreateAccounts.cs" />
     <Compile Include="CheckLogin.cs" />
-    <Compile Include="CheckStoredDetailsFor.cs" />
     <Compile Include="LogIn.cs" />
     <Compile Include="PlayerRegisters.cs" />
     <Compile Include="PrizeDistributionForPayoutPool.cs" />
