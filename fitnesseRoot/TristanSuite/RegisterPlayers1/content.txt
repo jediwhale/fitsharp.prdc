@@ -7,11 +7,13 @@ Upon registration, player details are stored correctly in the system. Player can
 |johnsmith|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|>>player|
 |johnsmith|test456|john Smith II|55 Ranelagh Way|London|NN2EE2|UK|exception["Duplicate user name"]|
 
-The player can log in and the balance on his account is 0. Players cannot log in with an incorrect password.
+The player's balance on his account is 0.
 
 !|show player|<<player|
 |user name|name|address|city|post code|country|balance|
 |johnsmith|john Smith|44 Ranelagh Way|London|NN1EE1|UK|0|
+
+The player can log in. Players cannot log in with an incorrect password.
 
 !|Check Log In|
 |user name|password|logged in as player id?|

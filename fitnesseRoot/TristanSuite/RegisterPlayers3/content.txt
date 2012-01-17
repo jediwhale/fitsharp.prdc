@@ -1,0 +1,12 @@
+!|Test player service|
+
+Upon registration, player details are stored correctly in the system. Player cannot register if the requested user name already exists. 
+
+!|Register players|
+|user name|password|name|address|city|post code|country|succeeded?|message?|
+|johnsmith|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|yes|Player registered|
+
+|login player|johnsmith|with|test123|succeeds|yes|message|Player logged in|
+
+|login player|johnsmith|with|test456|succeeds|no|message|Invalid log in|
+

@@ -43,12 +43,14 @@
     <Compile Include="Draw.cs" />
     <Compile Include="DrawService.cs" />
     <Compile Include="DuplicateUserNameException.cs" />
+    <Compile Include="Enumerable.cs" />
     <Compile Include="InsufficientFundsException.cs" />
     <Compile Include="InvalidLogInException.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="PlayerService.cs" />
     <Compile Include="PlayerRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response.cs" />
     <Compile Include="Ticket.cs" />
     <Compile Include="PayoutPool.cs" />
   </ItemGroup>

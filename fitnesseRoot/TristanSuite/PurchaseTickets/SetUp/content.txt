@@ -1,7 +1,9 @@
-!|Set Up Test Environment|
-|Create Draw|2012/01/01|
+!|Test player service|
 
-!|Player Registers|
-|user name|password|name|address|city|post code|country|new player id?|
-|john|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|>>player|
+|test draw service|
+|create draw|2012/01/01|
+
+!|register players|
+|user name|password|name|address|city|post code|country|succeeded?|
+|john|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|yes|
 

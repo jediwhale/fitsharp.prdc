@@ -18,19 +18,38 @@ namespace Tristan {
         }
 
         public Player GetPlayer(string userName) {
-            return players.Values.Where(player => player.UserName == userName).First();
+            return players.Values.Where(player => player.UserName == userName).FirstOrDefault();
         }
 
-        public int Login(string username, string password) {
-            var loggedInPlayer = players.Values
-                    .Where(player => player.UserName == username && player.Password == password)
-                    .FirstOrDefault();
-            if (loggedInPlayer == null) throw new InvalidLogInException();
-            return loggedInPlayer.PlayerId;
+        public int LoginPlayer(string username, string password) {
+            var player = GetPlayer(username);
+            if (player == null || !player.HasPassword(password)) throw new InvalidLogInException();
+            return player.PlayerId;
         }
 
         public void DepositWithCard(int playerId, string card, string expiry, decimal amount) {
             players[playerId].AdjustBalance(amount);
+        }
+
+        public Response Register(PlayerRegistration registration) {
+            if (players.Values.Any(player => player.UserName == registration.UserName)) {
+                return new Response(false, "Duplicate user name");
+            }
+
+            var newPlayer = new Player(nextId++, registration);
+            players.Add(newPlayer.PlayerId, newPlayer);
+            return new Response(true, "Player registered");
+        }
+
+        public IEnumerable<Player> GetPlayers(string userName) {
+            return players.Values.Where(player => player.UserName == userName);
+        }
+
+        public Response Login(string username, string password) {
+            var loggedIn = GetPlayers(username).ForFirst(player => player.HasPassword(password), () => false);
+            return loggedIn
+                ? new Response(true, "Player logged in")
+                : new Response(false, "Invalid log in");
         }
 
         static int nextId = 1;

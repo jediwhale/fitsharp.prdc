@@ -12,6 +12,10 @@ namespace Tristan {
             PostCode = registration.PostCode;
         }
 
+        public bool HasPassword(string password) {
+            return Password == password;
+        }
+
         public void AdjustBalance(decimal amount) {
             var newBalance = Balance + amount;
             if (newBalance < 0) throw new InsufficientFundsException();
@@ -21,7 +25,7 @@ namespace Tristan {
         public int PlayerId { get; private set; }
         public decimal Balance { get; private set; }
         public string UserName { get; private set; }
-        public string Password { get; private set; }
+        string Password { get; set; }
         public string Name { get; private set; }
         public string Address { get; private set; }
         public string City { get; private set; }
