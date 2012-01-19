@@ -9,7 +9,7 @@ Upon registration, player details are stored correctly in the system. Player can
 
 The player's balance on his account is 0.
 
-!|get players|johnsmith|
+!|check fields for|player with username|johnsmith|
 |user name|name|address|city|post code|country|balance|
 |johnsmith|john Smith|44 Ranelagh Way|London|NN1EE1|UK|0|
 

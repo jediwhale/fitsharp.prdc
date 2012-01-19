@@ -9,7 +9,7 @@ namespace Tristan.Test {
         public string Player;
         public decimal Balance {
             get {
-                return playerService.GetPlayer(Player).Balance;
+                return playerService.PlayerWithUserName(Player).Balance;
             }
         }
 

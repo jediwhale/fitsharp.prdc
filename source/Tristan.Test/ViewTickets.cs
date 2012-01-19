@@ -24,15 +24,15 @@ namespace Tristan.Test {
         }
 
         public IEnumerable<Ticket> PlayerViewsTickets(string name) {
-            return drawService.GetTickets(playerService.GetPlayer(name).PlayerId);
+            return drawService.GetTickets(playerService.PlayerWithUserName(name).PlayerId);
         }
 
         public IEnumerable<Ticket> PlayerViewsOpenTickets(string name) {
-            return drawService.GetOpenTickets(playerService.GetPlayer(name).PlayerId);
+            return drawService.GetOpenTickets(playerService.PlayerWithUserName(name).PlayerId);
         }
 
         public IEnumerable<Ticket> PlayerViewsTicketsForDrawOn(string name, DateTime drawDate) {
-            return drawService.GetTickets(playerService.GetPlayer(name).PlayerId, drawDate);
+            return drawService.GetTickets(playerService.PlayerWithUserName(name).PlayerId, drawDate);
         }
 
         public void DrawResultsAre(DateTime drawDate, int[] numbers) {

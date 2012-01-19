@@ -1,4 +1,5 @@
 using fit;
+using fitSharp.Fit.Engine;
 
 namespace Tristan.Test {
     public class RegisterPlayers: ColumnFixture {
@@ -8,7 +9,8 @@ namespace Tristan.Test {
         }
 
         public override void Execute() {
-            SetSystemUnderTest(Processor.CallStack.GetSystemUnderTest<PlayerService>().Register(registration));
+            var playerService = Processor.GetSystemUnderTest<PlayerService>();
+            SetSystemUnderTest(playerService.Register(registration));
         }
 
         PlayerRegistration registration;

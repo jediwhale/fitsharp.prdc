@@ -1,4 +1,8 @@
+!*> Procedure definitions
+
 |define|login player|@username|with|@password|succeeds|@succeeded|message|@message|
 |with|login|@username||@password|
 |check|succeeded|@succeeded|
 |check|message|@message|
+
+*!

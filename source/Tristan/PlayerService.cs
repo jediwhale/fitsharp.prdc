@@ -19,12 +19,12 @@ namespace Tristan {
             return players[playerId];
         }
 
-        public Player GetPlayer(string userName) {
+        public Player PlayerWithUserName(string userName) {
             return players.GetPlayers(userName).FirstOrDefault();
         }
 
         public int LoginPlayer(string username, string password) {
-            var player = GetPlayer(username);
+            var player = PlayerWithUserName(username);
             if (player == null || !player.HasPassword(password)) throw new InvalidLogInException();
             return player.PlayerId;
         }
@@ -41,10 +41,6 @@ namespace Tristan {
             var newPlayer = new Player(registration);
             players.Add(newPlayer);
             return new Response(true, "Player registered");
-        }
-
-        public IEnumerable<Player> GetPlayers(string userName) {
-            return players.GetPlayers(userName);
         }
 
         public Response Login(string username, string password) {
