@@ -6,14 +6,14 @@ using System.Text;
 namespace Tristan {
     public class Draw {
         public Draw(DateTime drawDate) {
-            this.drawDate = drawDate;
+            DrawDate = drawDate;
         }
 
         public decimal TotalPoolSize { get; private set; }
 
         public void AddTicket(int playerId, int[] numbers, decimal amount) {
             TotalPoolSize += amount;
-            tickets.Add(MakeId(numbers), new Ticket(playerId, drawDate, amount, numbers));
+            tickets.Add(MakeId(numbers), new Ticket(playerId, DrawDate, amount, numbers));
         }
 
         public Ticket GetTicket(int[] numbers) {
@@ -40,7 +40,8 @@ namespace Tristan {
             return numbers.Aggregate(new StringBuilder(), (s, i) => s.Append(i).Append("-"), s => s.ToString());
         }
 
-        readonly DateTime drawDate;
+        public DateTime DrawDate { get; private set; }
+
         readonly Dictionary<string, Ticket> tickets = new Dictionary<string, Ticket>();
     }
 }

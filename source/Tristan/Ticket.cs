@@ -3,6 +3,8 @@ using System.Linq;
 
 namespace Tristan {
     public class Ticket {
+        public const decimal TicketCost = 10M;
+
         public Ticket(int playerId, DateTime drawDate, decimal amount, int[] numbers) {
             PlayerId = playerId;
             Amount = amount;

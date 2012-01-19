@@ -1,6 +1,5 @@
 !|Test player service|
 
-|test draw service|
 |create draw|2012/01/01|
 
 !|register players|

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Draw.cs" />
+    <Compile Include="Draws.cs" />
     <Compile Include="DrawService.cs" />
     <Compile Include="DuplicateUserNameException.cs" />
     <Compile Include="Enumerable.cs" />

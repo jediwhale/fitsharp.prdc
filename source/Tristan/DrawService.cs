@@ -4,23 +4,17 @@ using System.Linq;
 
 namespace Tristan {
     public class DrawService {
-        public DrawService(Players players) {
+        public DrawService(Players players, Draws draws) {
             this.players = players;
+            this.draws = draws;
         }
 
         public void CreateDraw(DateTime drawDate) {
-            draws.Add(drawDate, new Draw(drawDate));
+            draws.Add(new Draw(drawDate));
         }
 
         public Draw GetDraw(DateTime drawDate) {
             return draws[drawDate];
-        }
-
-        public void PurchaseTicket(DateTime drawDate, int playerId, int[] numbers, int count) {
-            var player = players[playerId];
-            var cost = ticketCost*count;
-            player.AdjustBalance(-cost);
-            GetDraw(drawDate).AddTicket(playerId, numbers, cost);
         }
 
         public void SettleDraw(DateTime drawDate, int[] numbers) {
@@ -39,21 +33,20 @@ namespace Tristan {
         }
 
         public IEnumerable<Ticket> GetTickets(int playerId) {
-            return draws.Values.SelectMany(draw => draw.GetTickets(playerId));
+            return draws.GetTickets(playerId);
         }
 
         public IEnumerable<Ticket> GetOpenTickets(int playerId) {
-            return draws.Values.SelectMany(draw => draw.GetTickets(playerId)).Where(ticket => ticket.IsOpen);
+            return GetTickets(playerId).Where(ticket => ticket.IsOpen);
         }
 
         public IEnumerable<Ticket> GetTickets(int playerId, DateTime drawDate) {
             return draws[drawDate].GetTickets(playerId);
         }
 
-        const decimal ticketCost = 10M;
 
-        readonly Dictionary<DateTime, Draw> draws = new Dictionary<DateTime,Draw>();
         readonly Players players;
+        readonly Draws draws;
         const decimal operatorDeductionFactor = 0.5M;
     }
 }

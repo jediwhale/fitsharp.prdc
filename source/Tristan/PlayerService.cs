@@ -1,10 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Tristan {
     public class PlayerService {
-        public PlayerService(Players players) {
+        public PlayerService(Players players, Draws draws) {
             this.players = players;
+            this.draws = draws;
         }
 
         public int RegisterPlayer(PlayerRegistration registration) {
@@ -50,6 +52,25 @@ namespace Tristan {
                 : new Response(false, "Invalid log in");
         }
 
+        public void PurchaseTicket(DateTime drawDate, int playerId, int[] numbers, int count) {
+            var player = players[playerId];
+            var cost = Ticket.TicketCost * count;
+            player.AdjustBalance(-cost);
+            draws[drawDate].AddTicket(playerId, numbers, cost);
+        }
+
+        public decimal PoolValueForDraw(DateTime drawDate) {
+            return draws[drawDate].TotalPoolSize;
+        }
+
+        public IEnumerable<Ticket> Tickets(string userName, DateTime drawDate, int[] numbers) {
+            var ticket = draws[drawDate].GetTicket(numbers);
+            return ticket != null && ticket.PlayerId == PlayerWithUserName(userName).PlayerId
+                       ? new List<Ticket> {ticket}
+                       : new List<Ticket>();
+        }
+
         readonly Players players;
+        readonly Draws draws;
     }
 }

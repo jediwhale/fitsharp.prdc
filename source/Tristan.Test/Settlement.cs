@@ -5,9 +5,10 @@ using fitlibrary;
 namespace Tristan.Test {
     public class Settlement: DoFixture {
         public Settlement() {
-            var players = new Players(); 
-            playerService = new PlayerService(players);
-            drawService = new DrawService(players);
+            var players = new Players();
+            var draws = new Draws();
+            playerService = new PlayerService(players, draws);
+            drawService = new DrawService(players, draws);
             drawDate = DateTime.Now;
             drawService.CreateDraw(drawDate);
         }
@@ -17,7 +18,7 @@ namespace Tristan.Test {
         }
 
         public Fixture TicketsInTheDraw() {
-            return new PurchaseTickets(playerService, drawService).WithDrawDate(drawDate);
+            return new PurchaseTickets(playerService).WithDrawDate(drawDate);
         }
 
         public void DrawResultsAre(int[] numbers) {

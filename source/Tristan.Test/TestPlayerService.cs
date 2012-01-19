@@ -1,23 +1,24 @@
-using fit;
+using System;
 using fitSharp.Machine.Model;
 
 namespace Tristan.Test {
     public class TestPlayerService: DomainAdapter {
         public TestPlayerService() {
             var players = new Players();
-            PlayerService = new PlayerService(players);
-            TestDrawService = new TestDrawService(players);
+            Draws = new Draws();
+            PlayerService = new PlayerService(players, Draws);
+            drawService = new DrawService(players, Draws);
         }
 
         public object SystemUnderTest { get { return PlayerService; } }
 
-        public Fixture PurchaseTicket() {
-            return new PurchaseTicket(this);
+        public void CreateDraw(DateTime drawDate) {
+            drawService.CreateDraw(drawDate);
         }
 
-        public TestDrawService TestDrawService { get; private set; }
-        public DrawService DrawService { get { return TestDrawService.DrawService; } }
+        readonly DrawService drawService;
 
         public PlayerService PlayerService { get; private set; }
+        public Draws Draws { get; private set; }
     }
 }

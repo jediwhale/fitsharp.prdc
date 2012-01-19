@@ -7,8 +7,9 @@ namespace Tristan.Test {
     public class ViewTickets: DoFixture {
         public ViewTickets() {
             var players = new Players();
-            playerService = new PlayerService(players);
-            drawService = new DrawService(players);
+            var draws = new Draws();
+            playerService = new PlayerService(players, draws);
+            drawService = new DrawService(players, draws);
         }
 
         public void DrawOnIsOpen(DateTime drawDate) {
@@ -20,7 +21,7 @@ namespace Tristan.Test {
         }
 
         public Fixture PurchaseTickets() {
-            return new PurchaseTickets(playerService, drawService);
+            return new PurchaseTickets(playerService);
         }
 
         public IEnumerable<Ticket> PlayerViewsTickets(string name) {
