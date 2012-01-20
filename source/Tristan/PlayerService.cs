@@ -9,32 +9,6 @@ namespace Tristan {
             this.draws = draws;
         }
 
-        public int RegisterPlayer(PlayerRegistration registration) {
-            if (players.GetPlayers(registration.UserName).Any()) throw new DuplicateUserNameException();
-
-            var newPlayer = new Player(registration);
-            players.Add(newPlayer);
-            return newPlayer.PlayerId;
-        }
-
-        public Player GetPlayer(int playerId) {
-            return players[playerId];
-        }
-
-        public Player PlayerWithUserName(string userName) {
-            return players.GetPlayers(userName).FirstOrDefault();
-        }
-
-        public int LoginPlayer(string username, string password) {
-            var player = PlayerWithUserName(username);
-            if (player == null || !player.HasPassword(password)) throw new InvalidLogInException();
-            return player.PlayerId;
-        }
-
-        public void DepositWithCard(int playerId, string card, string expiry, decimal amount) {
-            players[playerId].AdjustBalance(amount);
-        }
-
         public Response Register(PlayerRegistration registration) {
             if (players.GetPlayers(registration.UserName).Any()) {
                 return new Response(false, "Duplicate user name");
@@ -45,6 +19,10 @@ namespace Tristan {
             return new Response(true, "Player registered");
         }
 
+        public Player PlayerWithUserName(string userName) {
+            return players.GetPlayers(userName).FirstOrDefault();
+        }
+
         public Response Login(string username, string password) {
             var loggedIn = players.GetPlayers(username).ForFirst(player => player.HasPassword(password), () => false);
             return loggedIn
@@ -52,15 +30,21 @@ namespace Tristan {
                 : new Response(false, "Invalid log in");
         }
 
-        public void PurchaseTicket(DateTime drawDate, int playerId, int[] numbers, int count) {
+        public void DepositWithCard(string userName, string card, string expiry, decimal amount) {
+            var playerId = PlayerWithUserName(userName).PlayerId;
+            players[playerId].AdjustBalance(amount);
+        }
+
+        public void PurchaseTicket(DateTime drawDate, string userName, int[] numbers, int count) {
+            var playerId = PlayerWithUserName(userName).PlayerId;
             var player = players[playerId];
             var cost = Ticket.TicketCost * count;
             player.AdjustBalance(-cost);
             draws[drawDate].AddTicket(playerId, numbers, cost);
         }
 
-        public decimal PoolValueForDraw(DateTime drawDate) {
-            return draws[drawDate].TotalPoolSize;
+        public decimal AccountBalanceFor(string userName) {
+            return PlayerWithUserName(userName).Balance;
         }
 
         public IEnumerable<Ticket> Tickets(string userName, DateTime drawDate, int[] numbers) {
@@ -68,6 +52,18 @@ namespace Tristan {
             return ticket != null && ticket.PlayerId == PlayerWithUserName(userName).PlayerId
                        ? new List<Ticket> {ticket}
                        : new List<Ticket>();
+        }
+
+        public IEnumerable<Ticket> GetTickets(string userName) {
+            return draws.GetTickets(PlayerWithUserName(userName).PlayerId);
+        }
+
+        public IEnumerable<Ticket> GetOpenTickets(string userName) {
+            return GetTickets(userName).Where(ticket => ticket.IsOpen);
+        }
+
+        public IEnumerable<Ticket> GetTickets(string userName, DateTime drawDate) {
+            return draws[drawDate].GetTickets(PlayerWithUserName(userName).PlayerId);
         }
 
         readonly Players players;

@@ -8,8 +8,8 @@ namespace Tristan.Test {
 
         public void PlayerBalance(string name, decimal balance) {
             var registration = new PlayerRegistration {UserName = name};
-            var playerId = playerService.RegisterPlayer(registration);
-            playerService.GetPlayer(playerId).AdjustBalance(balance);
+            playerService.Register(registration);
+            playerService.PlayerWithUserName(name).AdjustBalance(balance);
         }
 
         readonly PlayerService playerService;

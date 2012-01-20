@@ -56,7 +56,6 @@
     <Compile Include="RegisterPlayers.cs" />
     <Compile Include="Settlement.cs" />
     <Compile Include="PurchaseTickets.cs" />
-    <Compile Include="TestDrawService.cs" />
     <Compile Include="TestPlayerService.cs" />
     <Compile Include="ViewTickets.cs" />
   </ItemGroup>

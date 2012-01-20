@@ -13,12 +13,8 @@ namespace Tristan {
             draws.Add(new Draw(drawDate));
         }
 
-        public Draw GetDraw(DateTime drawDate) {
-            return draws[drawDate];
-        }
-
         public void SettleDraw(DateTime drawDate, int[] numbers) {
-            var draw = GetDraw(drawDate);
+            var draw = draws[drawDate];
             var payoutPool = new PayoutPool(draw.TotalPoolSize * operatorDeductionFactor);
             var ticketCategories = draw.SplitTicketsIntoCategories(numbers);
             for (var matches = 0; matches <= numbers.Length; matches++) {
@@ -31,19 +27,6 @@ namespace Tristan {
                 }
             }
         }
-
-        public IEnumerable<Ticket> GetTickets(int playerId) {
-            return draws.GetTickets(playerId);
-        }
-
-        public IEnumerable<Ticket> GetOpenTickets(int playerId) {
-            return GetTickets(playerId).Where(ticket => ticket.IsOpen);
-        }
-
-        public IEnumerable<Ticket> GetTickets(int playerId, DateTime drawDate) {
-            return draws[drawDate].GetTickets(playerId);
-        }
-
 
         readonly Players players;
         readonly Draws draws;

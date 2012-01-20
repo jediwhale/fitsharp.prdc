@@ -6,25 +6,11 @@ namespace Tristan.Test {
     public class PurchaseTicket: DoFixture {
         public void PlayerDepositsDollarsWithCardAndExpiryDate(
                 string userName, decimal amount, string card, string expiry) {
-            var playerId = PlayerService.PlayerWithUserName(userName).PlayerId;
-            PlayerService.DepositWithCard(playerId, card, expiry, amount);
-        }
-
-        public decimal AccountBalanceFor(string userName) {
-            return PlayerService.PlayerWithUserName(userName).Balance;
-        }
-
-        public void PlayerBuysATicketWithNumbersForDrawOn(string userName, int[] numbers, DateTime drawDate) {
-            PlayerBuysTicketsWithNumbersForDrawOn(userName, 1, numbers, drawDate);
+            PlayerService.DepositWithCard(userName, card, expiry, amount);
         }
 
         public void PlayerBuysTicketsWithNumbersForDrawOn(string userName, int count, int[] numbers, DateTime drawDate) {
-            var playerId = PlayerService.PlayerWithUserName(userName).PlayerId;
-            PlayerService.PurchaseTicket(drawDate, playerId, numbers, count);
-        }
-
-        public decimal PoolValueForDrawOnIs(DateTime drawDate) {
-            return PlayerService.PoolValueForDraw(drawDate);
+            PlayerService.PurchaseTicket(drawDate, userName, numbers, count);
         }
 
         public bool TicketWithNumbersForDollarsIsRegisteredForPlayerForDrawOn(
@@ -34,6 +20,5 @@ namespace Tristan.Test {
         }
 
         PlayerService PlayerService { get { return Processor.GetSystemUnderTest<PlayerService>(); } }
-
     }
 }

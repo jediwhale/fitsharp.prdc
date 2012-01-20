@@ -16,8 +16,8 @@ namespace Tristan.Test {
             PlayerDrawNumbersCount(name, defaultDrawDate, numbers, count);
         }
 
-        public void PlayerDrawNumbersCount(string name, DateTime drawDate, int[] numbers, int count) {
-            playerService.PurchaseTicket(drawDate, playerService.PlayerWithUserName(name).PlayerId, numbers, count);
+        public void PlayerDrawNumbersCount(string userName, DateTime drawDate, int[] numbers, int count) {
+            playerService.PurchaseTicket(drawDate, userName, numbers, count);
         }
 
         readonly PlayerService playerService;
