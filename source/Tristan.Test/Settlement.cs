@@ -12,21 +12,21 @@ namespace Tristan.Test {
             drawDate = DateTime.Now;
             drawService.CreateDraw(drawDate);
         }
-
+/*
         public Fixture CreateAccounts() {
             return new CreateAccounts(playerService);
         }
 
         public Fixture TicketsInTheDraw() {
-            return new PurchaseTickets(playerService).WithDrawDate(drawDate);
-        }
-
-        public void DrawResultsAre(int[] numbers) {
-            drawService.SettleDraw(drawDate, numbers);
+            return new PurchaseTicketsForDraw(playerService).WithDrawDate(drawDate);
         }
 
         public Fixture AccountsAfterTheDraw() {
             return new AccountsAfterTheDraw(playerService);
+        }
+*/
+        public void DrawResultsAre(int[] numbers) {
+            drawService.SettleDraw(drawDate, numbers);
         }
 
         readonly DrawService drawService;

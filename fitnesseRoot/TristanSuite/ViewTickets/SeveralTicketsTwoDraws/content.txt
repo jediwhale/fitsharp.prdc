@@ -1,23 +1,26 @@
-|Draw on|2012/01/02|is open|
+|with|draw service|
 
-|Draw on|2012/01/03|is open|
+|create draw|2012/01/02|
+|create draw|2012/01/03|
 
-|purchase tickets|
+|with|player service|
+
+|purchase tickets for draw|
 |player|draw|numbers|count|
 |john|2012/01/02|1,3,4,5,8,10|1|
 |john|2012/01/01|1,3,4,5,8,10|1|
 |john|2012/01/01|3,6,9,12,15,18|5|
 
-|player|john|views tickets for draw on|2012/01/01|
+|view tickets for player|john|in draw|2012/01/01|
 |numbers|amount|
 |1,3,4,5,8,10|10|
 |3,6,9,12,15,18|50|
 
-|player|john|views tickets for draw on|2012/01/02|
+|view tickets for player|john|in draw|2012/01/02|
 |numbers|amount|
 |1,3,4,5,8,10|10|
 
-|player|john|views tickets for draw on|2012/01/03|
+|view tickets for player|john|in draw|2012/01/03|
 |numbers|amount|
 
 

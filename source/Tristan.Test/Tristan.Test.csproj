@@ -55,7 +55,7 @@
     <Compile Include="PurchaseTicket.cs" />
     <Compile Include="RegisterPlayers.cs" />
     <Compile Include="Settlement.cs" />
-    <Compile Include="PurchaseTickets.cs" />
+    <Compile Include="PurchaseTicketsForDraw.cs" />
     <Compile Include="TestTristan.cs" />
     <Compile Include="ViewTickets.cs" />
   </ItemGroup>

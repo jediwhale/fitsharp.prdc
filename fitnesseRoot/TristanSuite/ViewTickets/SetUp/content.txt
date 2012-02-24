@@ -1,6 +1,10 @@
-|view tickets|
+!|Test Tristan|
 
-|Draw on|2012/01/01|is open|
+|with|draw service|
+
+|create draw|2012/01/01|
+
+|with|player service|
 
 |create accounts|
 |player|balance|

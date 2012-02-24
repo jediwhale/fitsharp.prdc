@@ -1,13 +1,13 @@
 Arthur guessed all 6 balls correctly so he takes the entire 6 out of 6 prize.
 
-!|Tickets in the draw|
+!|Purchase tickets for draw|2012/01/02|
 |player|numbers|count|
 |Ford|2,11,22,33,38,18|5|
 |Arthur|1,5,4,7,9,20|5|
 |Trisha|10,21,30,6,16,26|5|
 |Marvin|12,13,14,15,16,17|5|
 
-|Draw results are|1,5,4,20,9,7|
+|Draw results for|2012/01/02|are|1,5,4,20,9,7|
 
 |Accounts after the draw|
 |Player|Balance?|

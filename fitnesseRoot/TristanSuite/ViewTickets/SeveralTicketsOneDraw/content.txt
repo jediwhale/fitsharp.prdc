@@ -1,10 +1,10 @@
-|purchase tickets|
+|purchase tickets for draw|
 |player|draw|numbers|count|
 |john|2012/01/01|1,3,4,5,8,10|1|
 |john|2012/01/01|2,3,5,8,10,12|1|
 |john|2012/01/01|3,6,9,12,15,18|5|
 
-|player|john|views tickets|
+|view tickets for player|john|
 |draw date|numbers|amount|
 |2012/01/01|1,3,4,5,8,10|10|
 |2012/01/01|2,3,5,8,10,12|10|

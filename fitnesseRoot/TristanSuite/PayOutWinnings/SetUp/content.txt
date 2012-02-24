@@ -1,6 +1,12 @@
-!|Settlement|
+!|Test Tristan|
 
-!|create accounts|
+|with|draw service|
+
+|create draw|2012/01/02|
+
+|with|player service|
+
+|create accounts|
 |player|balance|
 |Arthur|100|
 |Ford|100|

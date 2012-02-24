@@ -54,15 +54,15 @@ namespace Tristan {
                        : new List<Ticket>();
         }
 
-        public IEnumerable<Ticket> GetTickets(string userName) {
+        public IEnumerable<Ticket> ViewTicketsForPlayer(string userName) {
             return draws.GetTickets(PlayerWithUserName(userName).PlayerId);
         }
 
-        public IEnumerable<Ticket> GetOpenTickets(string userName) {
-            return GetTickets(userName).Where(ticket => ticket.IsOpen);
+        public IEnumerable<Ticket> ViewOpenTicketsForPlayer(string userName) {
+            return ViewTicketsForPlayer(userName).Where(ticket => ticket.IsOpen);
         }
 
-        public IEnumerable<Ticket> GetTickets(string userName, DateTime drawDate) {
+        public IEnumerable<Ticket> ViewTicketsForPlayer(string userName, DateTime drawDate) {
             return draws[drawDate].GetTickets(PlayerWithUserName(userName).PlayerId);
         }
 

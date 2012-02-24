@@ -15,25 +15,25 @@ namespace Tristan.Test {
         public void DrawOnIsOpen(DateTime drawDate) {
             drawService.CreateDraw(drawDate);
         }
-
+/*
         public Fixture CreateAccounts() {
             return new CreateAccounts(playerService);
         }
 
         public Fixture PurchaseTickets() {
-            return new PurchaseTickets(playerService);
+            return new PurchaseTicketsForDraw(playerService);
         }
-
+*/
         public IEnumerable<Ticket> PlayerViewsTickets(string name) {
-            return playerService.GetTickets(name);
+            return playerService.ViewTicketsForPlayer(name);
         }
 
         public IEnumerable<Ticket> PlayerViewsOpenTickets(string name) {
-            return playerService.GetOpenTickets(name);
+            return playerService.ViewOpenTicketsForPlayer(name);
         }
 
         public IEnumerable<Ticket> PlayerViewsTicketsForDrawOn(string name, DateTime drawDate) {
-            return playerService.GetTickets(name, drawDate);
+            return playerService.ViewTicketsForPlayer(name, drawDate);
         }
 
         public void DrawResultsAre(DateTime drawDate, int[] numbers) {
