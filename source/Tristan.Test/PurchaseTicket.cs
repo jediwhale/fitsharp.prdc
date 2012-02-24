@@ -19,6 +19,11 @@ namespace Tristan.Test {
                 .ForFirst(ticket => ticket.Amount == amount, () => false);
         }
 
+        public decimal PoolValueForDraw(DateTime drawDate) {
+            var test = Processor.GetSystemUnderTest<TestTristan>();
+            return test.Draws[drawDate].TotalPoolSize;
+        }
+
         PlayerService PlayerService { get { return Processor.GetSystemUnderTest<PlayerService>(); } }
     }
 }

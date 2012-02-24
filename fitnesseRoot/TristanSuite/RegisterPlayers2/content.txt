@@ -1,4 +1,5 @@
-!|Test player service|
+!|Test Tristan|
+|with|player service|
 
 Upon registration, player details are stored correctly in the system. Player cannot register if the requested user name already exists. 
 
