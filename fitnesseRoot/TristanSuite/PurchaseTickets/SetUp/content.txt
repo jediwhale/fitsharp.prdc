@@ -1,10 +1,11 @@
 !|Test Tristan|
 
 |with|draw service|
+
 |create draw|2012/01/01|
 
 |with|player service|
-|register players|
-|user name|password|name|address|city|post code|country|succeeded?|
-|john|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|yes|
 
+|create accounts|
+|player|balance|
+|john|0|

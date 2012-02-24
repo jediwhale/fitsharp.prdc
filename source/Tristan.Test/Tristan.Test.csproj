@@ -54,10 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PurchaseTicket.cs" />
     <Compile Include="RegisterPlayers.cs" />
-    <Compile Include="Settlement.cs" />
     <Compile Include="PurchaseTicketsForDraw.cs" />
+    <Compile Include="TestRegistration.cs" />
     <Compile Include="TestTristan.cs" />
-    <Compile Include="ViewTickets.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Tristan\Tristan.csproj">
