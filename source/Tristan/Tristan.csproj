@@ -43,10 +43,8 @@
     <Compile Include="Draw.cs" />
     <Compile Include="Draws.cs" />
     <Compile Include="DrawService.cs" />
-    <Compile Include="DuplicateUserNameException.cs" />
     <Compile Include="Enumerable.cs" />
     <Compile Include="InsufficientFundsException.cs" />
-    <Compile Include="InvalidLogInException.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Players.cs" />
     <Compile Include="PlayerService.cs" />
