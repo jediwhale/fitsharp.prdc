@@ -1,3 +1,5 @@
+using System;
+
 namespace Tristan {
     public class Player {
         public Player(PlayerRegistration registration) {
@@ -9,10 +11,14 @@ namespace Tristan {
             City = registration.City;
             Country = registration.Country;
             PostCode = registration.PostCode;
+            Verification = new Random().Next().ToString();
         }
 
-        public bool HasPassword(string password) {
-            return Password == password;
+        public bool IsVerified(string password, string verification) {
+            var verified = Password == password && 
+                (Verification == verification || Verification.Length == 0);
+            if (verified) Verification = string.Empty;
+            return verified;
         }
 
         public void AdjustBalance(decimal amount) {
@@ -21,10 +27,12 @@ namespace Tristan {
             Balance += amount;
         }
 
+        string Password { get; set; }
+
+        public string Verification{ get; private set; }
         public int PlayerId { get; set; }
         public decimal Balance { get; private set; }
         public string UserName { get; private set; }
-        string Password { get; set; }
         public string Name { get; private set; }
         public string Address { get; private set; }
         public string City { get; private set; }

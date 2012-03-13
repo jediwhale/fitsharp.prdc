@@ -3,9 +3,9 @@
 Upon registration, player details are stored correctly in the system. Player cannot register if the requested user name already exists. 
 
 !|Register players|
-|user name|password|name|address|city|post code|country|succeeded?|message?|
-|johnsmith|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|yes|Player registered|
-|johnsmith|test456|john Smith II|55 Ranelagh Way|London|NN2EE2|UK|no|Duplicate user name|
+|user name|password|name|address|city|post code|country|succeeded?|message?|verification?|
+|johnsmith|test123|john Smith|44 Ranelagh Way|London|NN1EE1|UK|yes|Player registered|>>verification|
+|johnsmith|test456|john Smith II|55 Ranelagh Way|London|NN2EE2|UK|no|Duplicate user name|blank|
 
 The player's balance on his account is 0.
 
@@ -13,9 +13,11 @@ The player's balance on his account is 0.
 |user name|name|address|city|post code|country|balance|
 |johnsmith|john Smith|44 Ranelagh Way|London|NN1EE1|UK|0|
 
-The player can log in. Players cannot log in with an incorrect password.
+The player can log in. Verification is required for the first log in. Players cannot log in with an incorrect password.
 
 !|Log In|
-|user name|password|succeeded?|message?|
-|johnsmith|test123|yes|Player logged in|
-|johnsmith|test456|no|Invalid log in|
+|user name|password|verification|succeeded?|message?|
+|johnsmith|test123|blank|no|Invalid log in|
+|johnsmith|test123|<<verification|yes|Player logged in|
+|johnsmith|test123|blank|yes|Player logged in|
+|johnsmith|test456|blank|no|Invalid log in|

@@ -16,15 +16,15 @@ namespace Tristan {
 
             var newPlayer = new Player(registration);
             players.Add(newPlayer);
-            return new Response(true, "Player registered");
+            return new Response(true, "Player registered", newPlayer.Verification);
         }
 
         public Player PlayerWithUserName(string userName) {
             return players.GetPlayers(userName).FirstOrDefault();
         }
 
-        public Response Login(string username, string password) {
-            var loggedIn = players.GetPlayers(username).ForFirst(player => player.HasPassword(password), () => false);
+        public Response Login(string username, string password, string verification) {
+            var loggedIn = players.GetPlayers(username).ForFirst(player => player.IsVerified(password, verification), () => false);
             return loggedIn
                 ? new Response(true, "Player logged in")
                 : new Response(false, "Invalid log in");

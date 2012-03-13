@@ -2,8 +2,8 @@
 
 |comment|
 
-|define|login player|@username|with|@password|succeeds|@succeeded|message|@message|
-|with|login|@username||@password|
+|define|login player|@username|with password|@password|verification|@verification|succeeds|@succeeded|message|@message|
+|with|login|@username||@password||@verification|
 |check|succeeded|@succeeded|
 |check|message|@message|
 

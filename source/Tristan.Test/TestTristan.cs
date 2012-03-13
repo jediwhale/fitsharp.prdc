@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using fitlibrary;
 
 namespace Tristan.Test {
@@ -7,7 +6,7 @@ namespace Tristan.Test {
         public TestTristan() {
             var players = new Players();
             draws = new Draws();
-            playerService = new PlayerService(players, draws);
+            playerService = new TestPlayerService(new PlayerService(players, draws));
             drawService = new DrawService(players, draws);
         }
 
@@ -17,12 +16,8 @@ namespace Tristan.Test {
             drawService.SettleDraw(drawDate, numbers);
         }
 
-        public IEnumerable<Ticket> ViewTicketsForPlayerInDraw(string name, DateTime drawDate) {
-            return playerService.ViewTicketsForPlayer(name, drawDate);
-        }
-
         readonly Draws draws;
         readonly DrawService drawService;
-        readonly PlayerService playerService;
+        readonly TestPlayerService playerService;
     }
 }
